@@ -1,26 +1,21 @@
 {
-  "name": "caiconbutton",
+  "name": "@antonyrajr/caiconbutton",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-native-web-hover": "^0.2.9",
     "react-scripts": "5.0.1",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+    "typescript": "^4.4.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "gen-ts": "npx tsc",
+    "remove-unwanted": "rm -rf build/dts/App.d.ts && rm -rf build/dts/index.d.ts",
+    "build": "yarn remove react-native && yarn gen-ts && yarn remove-unwanted && rollup -c && yarn add react-native"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +34,60 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "main": "./package/index.js",
+  "author": "rajavijayakumar-r <rajavijayakumar.r@credavenue.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.13",
+    "@types/react-dom": "^18.0.5",
+    "@types/react-native": "^0.67.8",
+    "autoprefixer": "^10.4.7",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^28.1.1",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-react-native-web": "^0.18.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babelrc-rollup": "^3.0.0",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.2.1",
+    "react-native": "^0.68.2",
+    "react-native-web": "^0.18.1",
+    "regenerator-runtime": "^0.13.9",
+    "rollup": "^2.75.6",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-filesize": "^9.1.2",
+    "rollup-plugin-postcss": "^4.0.2"
+  },
+  "module": "package/index.esm.js",
+  "browser": "package/index.js",
+  "style": "package/index.css",
+  "types": "./package/dts/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:antonyrajr/caiconbutton.git",
+    "directory": "./package/index.js"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }
